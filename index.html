@@ -411,6 +411,28 @@
             margin: 0 auto;
         }
 
+        /* Full-Bleed Section Backgrounds */
+        .full-bleed-bg {
+            position: relative;
+        }
+        .full-bleed-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            width: 100vw;
+            height: 100%;
+            z-index: -1;
+        }
+        .bg-slate::before {
+            background-color: #f8fafc;
+            border-top: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .bg-light::before {
+            background-color: #f8faf9;
+        }
+
         .features-header {
             display: flex;
             justify-content: space-between;
@@ -587,9 +609,6 @@
         }
 
         /* FAQ */
-        #faq {
-            background-color: #f8faf9;
-        }
         .faq-header {
             text-align: center;
             margin-bottom: 50px;
@@ -1061,7 +1080,7 @@
         </section>
 
         <!-- Supported Schemes Section -->
-        <section id="schemes" class="section">
+        <section id="schemes" class="section full-bleed-bg bg-slate">
             <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Phase 1 Schemes Active Now</h2>
             <p style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 50px; max-width: 600px;">Our initial release is pre-seeded with high-impact central schemes and dedicated enterprise development grants for Tamil Nadu.</p>
             
@@ -1144,7 +1163,7 @@
             </div>
         </section>
         <!-- FAQ Section -->
-        <section id="faq" class="section">
+        <section id="faq" class="section full-bleed-bg bg-light">
             <div class="faq-header">
                 <h2>Frequently asked questions</h2>
                 <p>The questions our support team hears most.</p>
