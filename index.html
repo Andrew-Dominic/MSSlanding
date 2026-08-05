@@ -839,7 +839,21 @@
             .phone-container { width: 90%; max-width: 320px; }
             .step-image { padding: 0; }
             .step-image img { width: 100%; max-width: 320px; }
-            .schemes-grid { grid-template-columns: 1fr; }
+            .schemes-grid { 
+                display: flex; 
+                flex-wrap: nowrap; 
+                overflow-x: auto; 
+                scroll-snap-type: x mandatory; 
+                padding-bottom: 20px; 
+                gap: 20px; 
+                -ms-overflow-style: none; 
+                scrollbar-width: none; 
+            }
+            .schemes-grid::-webkit-scrollbar { display: none; }
+            .scheme-card { 
+                flex: 0 0 85%; 
+                scroll-snap-align: center; 
+            }
             
             .floating-widget { padding: 8px 12px; gap: 8px; border-radius: 12px; }
             .widget-icon { width: 32px; height: 32px; font-size: 1.2rem; border-radius: 10px; }
