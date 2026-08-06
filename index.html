@@ -604,8 +604,113 @@
         .step-image img {
             width: 100%;
             max-width: 380px;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        /* Desktop Sticky Scroll Enhancements */
+        @media (min-width: 769px) {
+            #how-it-works {
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                overflow: hidden; /* Prevent overflow issues */
+                padding-top: 5vh;
+                padding-bottom: 5vh;
+            }
+            #how-it-works .section-title {
+                text-align: left;
+                margin-bottom: 20px;
+                width: 100%;
+            }
+            .steps-container {
+                position: relative;
+                flex: 1; /* Take remaining height */
+                min-height: 0;
+                width: 100%;
+                margin-top: 0;
+            }
+            .step-row {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                opacity: 0;
+                pointer-events: none;
+                flex-direction: row !important; /* Keep text left, image right */
+                gap: 50px;
+                transform: none; /* Let GSAP handle animation */
+            }
+            .step-row:nth-child(1) {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .step-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start; /* Fix for badge stretching full width */
+                height: 100%;
+                padding-right: 40px;
+            }
+            .step-image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+
+            /* Scroll Progress Indicator styles */
+            .how-it-works-header {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+            #how-it-works .section-title {
+                margin-bottom: 12px;
+            }
+            .scroll-progress-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+            }
+            .scroll-progress-track {
+                width: 140px;
+                height: 4px;
+                background: #e2e8f0;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+            .scroll-progress-bar {
+                width: 0%;
+                height: 100%;
+                background: var(--highlight);
+                border-radius: 4px;
+            }
+            .scroll-indicator-text {
+                font-size: 0.95rem;
+                font-weight: 600;
+                color: var(--text-secondary);
+                display: flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .scroll-indicator-text i {
+                animation: bounce-vertical 1.5s infinite;
+            }
+            @keyframes bounce-vertical {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(4px); }
+            }
+        }
+
+        /* Hide progress indicator on mobile */
+        @media (max-width: 768px) {
+            .scroll-progress-wrapper {
+                display: none;
+            }
         }
 
         /* FAQ */
@@ -953,27 +1058,7 @@
                     </div>
                 </div>
 
-                <div class="hero-social-proof">
-                    <div class="avatars">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User">
-                        <img src="https://randomuser.me/api/portraits/men/47.jpg" alt="User">
-                        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="User">
-                        <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="User">
-                        <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="User">
-                    </div>
-                    <div class="stars-container">
-                        <div class="stars">
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                            <i class='bx bxs-star'></i>
-                        </div>
-                        <div class="social-proof-text">
-                            <strong>5,000+</strong> users discovering schemes
-                        </div>
-                    </div>
-                </div>
+
             </div>
             
             <div class="hero-right">
@@ -1132,7 +1217,15 @@
 
         <!-- How it Works Section -->
         <section id="how-it-works" class="section">
-            <h2 class="section-title">From discovery to application in minutes.</h2>
+            <div class="how-it-works-header">
+                <h2 class="section-title">From discovery to application in minutes.</h2>
+                <div class="scroll-progress-wrapper">
+                    <div class="scroll-progress-track">
+                        <div class="scroll-progress-bar"></div>
+                    </div>
+                    <span class="scroll-indicator-text">Keep scrolling to explore <i class='bx bx-down-arrow-alt'></i></span>
+                </div>
+            </div>
             <div class="steps-container">
                 <div class="step-row">
                     <div class="step-content">
@@ -1315,18 +1408,70 @@
             });
 
 
-            // Animate 'How it works' Steps on scroll
-            const steps = gsap.utils.toArray(".step-row");
-            steps.forEach((step) => {
-                gsap.from(step, {
+            // Animate 'How it works' Steps on scroll (Responsive)
+            let mm = gsap.matchMedia();
+
+            mm.add("(min-width: 769px)", () => {
+                // Desktop pinned scroll
+                const stepsSection = document.getElementById('how-it-works');
+                const stepsRows = gsap.utils.toArray(stepsSection.querySelectorAll('.step-row'));
+                
+                gsap.set(stepsRows, { opacity: 0, y: 50, pointerEvents: "none" });
+                gsap.set(stepsRows[0], { opacity: 1, y: 0, pointerEvents: "auto" });
+
+                const tl = gsap.timeline({
                     scrollTrigger: {
-                        trigger: step,
-                        start: "top 85%",
-                    },
-                    y: 40,
-                    opacity: 0,
-                    duration: 0.8,
-                    ease: "power2.out"
+                        trigger: stepsSection,
+                        start: "center center", 
+                        end: "+=1500", // Total scroll distance for the pin
+                        pin: true,
+                        scrub: 1,
+                        anticipatePin: 1,
+                        onUpdate: (self) => {
+                            // Update progress bar
+                            gsap.to(".scroll-progress-bar", { width: `${self.progress * 100}%`, duration: 0.1, overwrite: true });
+                            
+                            // Fade out text hint when user starts scrolling
+                            if(self.progress > 0.05) {
+                                gsap.to(".scroll-indicator-text", { opacity: 0, duration: 0.3, overwrite: true });
+                            } else {
+                                gsap.to(".scroll-indicator-text", { opacity: 1, duration: 0.3, overwrite: true });
+                            }
+                        }
+                    }
+                });
+
+                stepsRows.forEach((step, i) => {
+                    if (i > 0) {
+                        // Fade out previous step
+                        tl.to(stepsRows[i-1], { opacity: 0, y: -50, pointerEvents: "none", duration: 1 }, `step${i}`);
+                        // Fade in current step
+                        tl.to(step, { opacity: 1, y: 0, pointerEvents: "auto", duration: 1 }, `step${i}`);
+                        // Hold for reading
+                        tl.to(step, { opacity: 1, duration: 1 });
+                    } else {
+                        // Hold first step initially
+                        tl.to(step, { opacity: 1, duration: 1 });
+                    }
+                });
+            });
+
+            mm.add("(max-width: 768px)", () => {
+                // Mobile regular scroll
+                const stepsRows = gsap.utils.toArray("#how-it-works .step-row");
+                gsap.set(stepsRows, { clearProps: "all" }); // Clear any pinned styles
+
+                stepsRows.forEach((step) => {
+                    gsap.from(step, {
+                        scrollTrigger: {
+                            trigger: step,
+                            start: "top 85%",
+                        },
+                        y: 40,
+                        opacity: 0,
+                        duration: 0.8,
+                        ease: "power2.out"
+                    });
                 });
             });
 
