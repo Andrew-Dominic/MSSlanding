@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="MSS (MSME Scheme Search) - AI-powered digital platform to discover and access government schemes for MSMEs, startups, entrepreneurs, students, artisans, farmers and self-help groups. Powered by Saarthi, a multilingual voice AI companion.">
-    <title>MSS | MSME Scheme Search — Discover. Apply. Empower.</title>
+    <title>MSS | MSME Scheme Search. Discover. Apply. Empower.</title>
     <link rel="icon" type="image/png" href="asset/image/Logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +33,10 @@
             --border: #e5e7eb;
             --highlight: #2563EB; /* Royal Blue */
             --accent: #FF9933; /* Saffron Orange */
+            /* Brand tricolor from Logo */
+            --brand-navy: #1B3A5C;
+            --brand-saffron: #FF9933;
+            --brand-green: #138808;
         }
 
         * {
@@ -479,17 +483,46 @@
         }
 
         .bento-box {
-            background: var(--surface);
-            border-radius: 30px;
-            padding: 40px;
+            background: #fff;
+            border-radius: 18px;
+            padding: 44px;
             display: flex;
             flex-direction: column;
-            transition: transform 0.3s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            /* Minimal brutalism — brand navy default */
+            border: 2px solid var(--brand-navy);
+            box-shadow: 5px 5px 0 var(--brand-navy);
         }
         
         .bento-box:hover {
-            transform: translateY(-5px);
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0 var(--brand-navy);
         }
+
+        /* Tricolor card accents — each card gets its own brand color */
+        .bento-box:nth-child(1) {
+            border-color: var(--brand-navy);
+            box-shadow: 5px 5px 0 var(--brand-navy);
+        }
+        .bento-box:nth-child(1):hover { box-shadow: 7px 7px 0 var(--brand-navy); }
+
+        .bento-box:nth-child(2) {
+            border-color: var(--brand-saffron);
+            box-shadow: 5px 5px 0 var(--brand-saffron);
+        }
+        .bento-box:nth-child(2):hover { box-shadow: 7px 7px 0 var(--brand-saffron); }
+
+        .bento-box:nth-child(3) {
+            border-color: var(--brand-green);
+            box-shadow: 5px 5px 0 var(--brand-green);
+        }
+        .bento-box:nth-child(3):hover { box-shadow: 7px 7px 0 var(--brand-green); }
+
+        .bento-box:nth-child(4) {
+            border-color: var(--brand-saffron);
+            box-shadow: 5px 5px 0 var(--brand-saffron);
+        }
+        .bento-box:nth-child(4):hover { box-shadow: 7px 7px 0 var(--brand-saffron); }
 
         .bento-box.span-2 {
             grid-column: span 2;
@@ -497,12 +530,17 @@
 
         .bento-visual {
             flex: 1;
-            min-height: 180px;
+            min-height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-bottom: 30px;
             position: relative;
+            /* Grounded container for infographics */
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 28px;
+            border: 1px solid #e5e7eb;
         }
 
         .bento-box h3 {
@@ -531,19 +569,19 @@
             justify-items: center;
         }
         .sync-icon {
-            width: 40px; height: 40px; background: #fff; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            width: 44px; height: 44px; background: #fff; border-radius: 14px; box-shadow: 0 2px 8px rgba(27, 58, 92, 0.08); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--brand-navy); border: 1px solid #e5e7eb;
         }
         .sync-center {
-            background: #000; color: #fff; width: 50px; height: 50px; border-radius: 16px; grid-column: 2; grid-row: 2; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+            background: var(--brand-navy); color: #fff; width: 54px; height: 54px; border-radius: 16px; grid-column: 2; grid-row: 2; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; box-shadow: 0 4px 12px rgba(27, 58, 92, 0.25);
         }
         
         /* Visual 2 */
         .org-visual {
             background: #fff;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            width: 80%;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+            width: 90%;
         }
         .org-row { display: flex; justify-content: space-between; margin-bottom: 15px; }
         .org-tag { background: #f3f4f6; padding: 6px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; display: flex; align-items: center; gap: 8px;}
@@ -553,19 +591,23 @@
 
         /* Visual 3 */
         .icons-visual {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            padding: 10px;
+            width: 100%;
+            max-width: 280px;
         }
         .circle-icon {
-            width: 45px; height: 45px; background: #111; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            width: 50px; height: 50px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #fff;
         }
+        .circle-icon.ic-navy { background: var(--brand-navy); }
+        .circle-icon.ic-saffron { background: var(--brand-saffron); }
+        .circle-icon.ic-green { background: var(--brand-green); }
 
         /* Visual 4 */
         .secure-visual {
-            width: 80px; height: 80px; background: #fff; border-radius: 50%; box-shadow: 0 0 0 15px rgba(37, 99, 235, 0.15); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; color: var(--highlight);
+            width: 90px; height: 90px; background: #fff; border-radius: 50%; box-shadow: 0 0 0 12px rgba(255, 153, 51, 0.12), 0 0 0 24px rgba(255, 153, 51, 0.06); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: var(--brand-saffron); border: 2px solid rgba(255, 153, 51, 0.3);
         }
 
 
@@ -964,6 +1006,28 @@
             .features-header p { text-align: left; }
             .bento-grid { grid-template-columns: 1fr; }
             .bento-box.span-2 { grid-column: span 1; }
+
+            /* Mobile scroll-stacking for bento cards */
+            .bento-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 0;
+                padding-bottom: 20px;
+            }
+            .bento-box {
+                position: sticky;
+                top: 20px;
+                z-index: 1;
+                margin-bottom: 24px;
+                min-height: 75vh;
+                justify-content: center;
+                /* Solid bg to prevent bleed-through from cards underneath */
+                background: #fff;
+            }
+            .bento-box:nth-child(1) { z-index: 1; }
+            .bento-box:nth-child(2) { z-index: 2; top: 36px; }
+            .bento-box:nth-child(3) { z-index: 3; top: 52px; }
+            .bento-box:nth-child(4) { z-index: 4; top: 68px; }
         }
         
         @media (max-width: 768px) {
@@ -1002,10 +1066,30 @@
             .section { padding: 50px 5% !important; margin-top: 0; }
             .features-header { margin-bottom: 36px; }
             .features-header h2 { font-size: 2.2rem; }
-            .bento-box { padding: 24px; border-radius: 20px; }
-            .bento-box h3 { font-size: 1.35rem; }
+            .bento-box { padding: 28px 20px; border-radius: 16px; }
+            .bento-box:nth-child(1) { box-shadow: 4px 4px 0 var(--brand-navy); }
+            .bento-box:nth-child(2) { box-shadow: 4px 4px 0 var(--brand-saffron); }
+            .bento-box:nth-child(3) { box-shadow: 4px 4px 0 var(--brand-green); }
+            .bento-box:nth-child(4) { box-shadow: 4px 4px 0 var(--brand-saffron); }
+            .bento-box h3 { font-size: 1.4rem; }
             .bento-box p { font-size: 0.95rem; }
-            .bento-visual { min-height: 120px; margin-bottom: 20px; }
+            .bento-visual { min-height: 160px; margin-bottom: 20px; padding: 20px 16px; }
+
+            /* Org visual (card 2) mobile fix */
+            .org-visual { width: 100%; padding: 18px 14px; }
+            .org-row { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            .org-tag { font-size: 0.78rem; padding: 8px 14px; }
+
+            /* Icons visual (card 3) mobile fix */
+            .icons-visual { max-width: 100%; padding: 6px; gap: 12px; }
+            .circle-icon { width: 46px; height: 46px; font-size: 1.2rem; border-radius: 12px; }
+
+            /* Secure visual (card 4) mobile fix */
+            .secure-visual { width: 76px; height: 76px; font-size: 2.4rem; }
+
+            /* Schemes section mobile */
+            #schemes .section-title { font-size: 1.8rem !important; margin-bottom: 12px !important; }
+            #schemes > p { font-size: 0.9rem !important; margin-bottom: 20px !important; line-height: 1.5; }
 
             /* Schemes carousel */
             .schemes-grid { 
@@ -1013,27 +1097,31 @@
                 flex-wrap: nowrap; 
                 overflow-x: auto; 
                 scroll-snap-type: x mandatory; 
-                padding-bottom: 16px; 
-                gap: 16px; 
+                padding: 4px 0 20px; 
+                gap: 14px; 
                 -ms-overflow-style: none; 
                 scrollbar-width: none; 
             }
             .schemes-grid::-webkit-scrollbar { display: none; }
             .scheme-card { 
-                flex: 0 0 82%; 
-                scroll-snap-align: center; 
-                padding: 28px 24px;
-                border-radius: 20px;
+                flex: 0 0 85%; 
+                scroll-snap-align: start; 
+                padding: 24px 20px;
+                border-radius: 18px;
+                border: 1.5px solid #e2e8f0;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             }
-            .scheme-card::after { opacity: 1; }
+            .scheme-card::after { opacity: 1; height: 3px; }
             .scheme-card .card-arrow {
                 opacity: 1;
                 transform: translateX(0);
-                background: #111;
+                background: var(--brand-navy);
                 color: #fff;
+                width: 36px; height: 36px;
             }
-            .scheme-card h3 { font-size: 1.3rem; }
-            .scheme-card p { font-size: 0.95rem; margin-bottom: 16px; }
+            .scheme-badge { margin-bottom: 16px; padding: 6px 12px; font-size: 0.7rem; }
+            .scheme-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+            .scheme-card p { font-size: 0.88rem; margin-bottom: 14px; line-height: 1.5; }
 
             /* Steps */
             .step-row { flex-direction: column !important; text-align: center; gap: 30px; }
@@ -1076,13 +1164,33 @@
             .phone-fade { max-height: 55vh; }
 
             /* Sections */
-            .section { padding: 40px 5% !important; }
+            .section { padding: 40px 4% !important; }
             .features-header h2 { font-size: 1.8rem; }
             .features-header { margin-bottom: 28px; }
-            .bento-box { padding: 20px; }
-            .bento-visual { min-height: 100px; margin-bottom: 16px; }
+            .bento-box { padding: 24px 16px; min-height: 70vh; }
+            .bento-box:nth-child(1) { box-shadow: 3px 3px 0 var(--brand-navy); }
+            .bento-box:nth-child(2) { box-shadow: 3px 3px 0 var(--brand-saffron); }
+            .bento-box:nth-child(3) { box-shadow: 3px 3px 0 var(--brand-green); }
+            .bento-box:nth-child(4) { box-shadow: 3px 3px 0 var(--brand-saffron); }
+            .bento-visual { min-height: 120px; margin-bottom: 16px; padding: 16px 12px; }
             .bento-box h3 { font-size: 1.2rem; margin-bottom: 8px; }
             .bento-box p { font-size: 0.88rem; }
+
+            /* Org visual mobile */
+            .org-visual { padding: 14px 10px; }
+            .org-tag { font-size: 0.72rem; padding: 6px 10px; gap: 6px; }
+
+            /* Icons grid mobile */
+            .icons-visual { gap: 10px; }
+            .circle-icon { width: 40px; height: 40px; font-size: 1.1rem; border-radius: 10px; }
+
+            /* Secure visual mobile */
+            .secure-visual { width: 68px; height: 68px; font-size: 2rem; box-shadow: 0 0 0 10px rgba(255, 153, 51, 0.12), 0 0 0 20px rgba(255, 153, 51, 0.06); }
+
+            /* Sync visual mobile */
+            .sync-icon { width: 38px; height: 38px; font-size: 1.1rem; border-radius: 12px; }
+            .sync-center { width: 46px; height: 46px; font-size: 1.3rem; border-radius: 14px; }
+            .sync-visual { gap: 10px; }
 
             /* Scheme cards */
             .scheme-card { flex: 0 0 88%; padding: 24px 20px; }
@@ -1167,14 +1275,14 @@
                 <div class="hero-badge">
                     <i class='bx bx-bot' style="font-size: 1.8rem; color: #888;"></i>
                     <div class="badge-text">
-                        <span class="badge-text-small">Meet Saarthi — Your AI Companion</span>
+                        <span class="badge-text-small">Meet Saarthi, Your AI Companion</span>
                         <span class="badge-text-large">Discover. Apply. Empower.</span>
                     </div>
                 </div>
 
                 <h1>Find your <span class="highlight">perfect</span><br>scheme instantly.</h1>
-                <p class="desktop-only">Talk to Saarthi, our multilingual voice AI companion. It cross-references your profile against 217 government grants, subsidies, and scholarships to uncover benefits you actually qualify for — in English or Tamil.</p>
-                <p class="mobile-only">Saarthi, our voice AI, matches your profile to 217 government schemes — in English or Tamil.</p>
+                <p class="desktop-only">Talk to Saarthi, our multilingual voice AI companion. It cross-references your profile against 217 government grants, subsidies, and scholarships to uncover benefits you actually qualify for, in English or Tamil.</p>
+                <p class="mobile-only">Saarthi, our voice AI, matches your profile to 217 government schemes in English or Tamil.</p>
                 
                 <div class="hero-actions-container">
                     <a href="#" class="store-btn" onclick="alert('Download started!')">
@@ -1228,7 +1336,7 @@
         <section id="features" class="section">
             <div class="features-header">
                 <h2>Built for impact.</h2>
-                <p class="desktop-only">Five core capabilities that make MSS the smartest way to discover and access government support — powered by Saarthi, your AI companion.</p>
+                <p class="desktop-only">Five core capabilities that make MSS the smartest way to discover and access government support. Powered by Saarthi, your AI companion.</p>
                 <p class="mobile-only">Powered by Saarthi, your AI companion.</p>
             </div>
 
@@ -1248,8 +1356,8 @@
                             <div></div>
                         </div>
                     </div>
-                    <h3>Saarthi — Voice AI</h3>
-                    <p class="desktop-only">Speak in English or Tamil. Saarthi, our multilingual voice AI companion, builds your profile through natural conversation — no forms needed.</p>
+                    <h3>Saarthi Voice AI</h3>
+                    <p class="desktop-only">Speak in English or Tamil. Saarthi, our multilingual voice AI companion, builds your profile through natural conversation. No forms needed.</p>
                     <p class="mobile-only">Speak in English or Tamil. Saarthi builds your profile through conversation.</p>
                 </div>
 
@@ -1268,7 +1376,7 @@
                         </div>
                     </div>
                     <h3>AI-Powered Scheme Matching</h3>
-                    <p class="desktop-only">Whether you're an MSME founder, a student, a farmer, or part of a self-help group — MSS analyses your profile against 217 live schemes and ranks them by your real eligibility score.</p>
+                    <p class="desktop-only">Whether you're an MSME founder, a student, a farmer, or part of a self-help group, MSS analyses your profile against 217 live schemes and ranks them by your real eligibility score.</p>
                     <p class="mobile-only">MSS analyses your profile against 217 live schemes and ranks them by eligibility.</p>
                 </div>
 
@@ -1276,19 +1384,19 @@
                 <div class="bento-box span-2">
                     <div class="bento-visual">
                         <div class="icons-visual">
-                            <div class="circle-icon"><i class='bx bx-buildings'></i></div>
-                            <div class="circle-icon"><i class='bx bx-flag'></i></div>
-                            <div class="circle-icon"><i class='bx bx-briefcase'></i></div>
-                            <div class="circle-icon"><i class='bx bx-bank'></i></div>
-                            <div class="circle-icon"><i class='bx bx-store'></i></div>
-                            <div class="circle-icon"><i class='bx bx-group'></i></div>
-                            <div class="circle-icon"><i class='bx bx-leaf'></i></div>
-                            <div class="circle-icon"><i class='bx bx-book'></i></div>
+                            <div class="circle-icon ic-navy"><i class='bx bx-buildings'></i></div>
+                            <div class="circle-icon ic-saffron"><i class='bx bx-flag'></i></div>
+                            <div class="circle-icon ic-green"><i class='bx bx-briefcase'></i></div>
+                            <div class="circle-icon ic-navy"><i class='bx bx-wallet'></i></div>
+                            <div class="circle-icon ic-saffron"><i class='bx bx-store'></i></div>
+                            <div class="circle-icon ic-green"><i class='bx bx-group'></i></div>
+                            <div class="circle-icon ic-navy"><i class='bx bx-leaf'></i></div>
+                            <div class="circle-icon ic-saffron"><i class='bx bx-book'></i></div>
                         </div>
                     </div>
-                    <h3>217 Schemes — Offline &amp; Always Current</h3>
-                    <p class="desktop-only">The bundled database includes 119 Central, 59 State, and 39 partner schemes — accessible offline. All application links redirect to official government portals.</p>
-                    <p class="mobile-only">119 Central, 59 State, and 39 partner schemes — works offline.</p>
+                    <h3>217 Schemes. Offline &amp; Always Current</h3>
+                    <p class="desktop-only">The bundled database includes 119 Central, 59 State, and 39 partner schemes, accessible offline. All application links redirect to official government portals.</p>
+                    <p class="mobile-only">119 Central, 59 State, and 39 partner schemes. Works offline.</p>
                 </div>
 
                 <!-- Box 4 (Square) — Adaptive Questioning -->
@@ -1299,7 +1407,7 @@
                         </div>
                     </div>
                     <h3>Adaptive Questioning</h3>
-                    <p class="desktop-only">Saarthi uses progressive profiling — asking only the minimum questions needed to improve recommendation accuracy. Simple, fast, and private.</p>
+                    <p class="desktop-only">Saarthi uses progressive profiling, asking only the minimum questions needed to improve recommendation accuracy. Simple, fast, and private.</p>
                     <p class="mobile-only">Asks only the minimum questions needed. Simple, fast, private.</p>
                 </div>
             </div>
@@ -1308,8 +1416,8 @@
         <!-- Supported Schemes Section -->
         <section id="schemes" class="section full-bleed-bg bg-slate">
             <h2 class="section-title" style="text-align: left; margin-bottom: 20px;">Phase 1 Schemes Active Now</h2>
-            <p class="desktop-only" style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 50px; max-width: 600px;">Our bundled database of 217 schemes includes Central Government, State Government (Tamil Nadu), SIDBI partnership, and bank-linked MSME programmes — with direct links to official application portals.</p>
-            <p class="mobile-only" style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 30px;">Central, State (TN), SIDBI &amp; bank-linked MSME programmes — with direct official links.</p>
+            <p class="desktop-only" style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 50px; max-width: 600px;">Our bundled database of 217 schemes includes Central Government, State Government (Tamil Nadu), SIDBI partnership, and bank-linked MSME programmes with direct links to official application portals.</p>
+            <p class="mobile-only" style="color: var(--text-secondary); font-size: 1rem; margin-bottom: 30px;">Central, State (TN), SIDBI &amp; bank-linked MSME programmes with direct official links.</p>
             
             <div class="schemes-grid">
                 <div class="scheme-card">
@@ -1367,8 +1475,8 @@
                     <div class="step-content">
                         <span class="step-num">STEP 1</span>
                         <h3>Talk to Saarthi.</h3>
-                        <p class="desktop-only">Speak or type in English or Tamil. Saarthi, our multilingual voice AI companion, asks only the minimum questions needed to understand your background, location, and business or education profile — conversationally, not through forms.</p>
-                        <p class="mobile-only">Speak or type in English or Tamil. Saarthi learns about you through conversation — no forms.</p>
+                        <p class="desktop-only">Speak or type in English or Tamil. Saarthi, our multilingual voice AI companion, asks only the minimum questions needed to understand your background, location, and business or education profile. Conversationally, not through forms.</p>
+                        <p class="mobile-only">Speak or type in English or Tamil. Saarthi learns about you through conversation. No forms.</p>
                     </div>
                     <div class="step-image">
                         <img src="asset/image/steps/1.jpeg" alt="Profile Setup" onerror="this.src='https://images.unsplash.com/photo-1616077168712-fc6c788db4af?q=80&w=250&auto=format&fit=crop'">
@@ -1379,7 +1487,7 @@
                     <div class="step-content">
                         <span class="step-num">STEP 2</span>
                         <h3>Get your AI Match Score.</h3>
-                        <p class="desktop-only">Our AI recommendation engine instantly maps your profile against 217 live Central and State schemes, delivering a ranked list with a transparent eligibility explanation — so you know exactly why you qualify.</p>
+                        <p class="desktop-only">Our AI recommendation engine instantly maps your profile against 217 live Central and State schemes, delivering a ranked list with a transparent eligibility explanation so you know exactly why you qualify.</p>
                         <p class="mobile-only">Get a ranked list of matching schemes with clear eligibility explanations.</p>
                     </div>
                     <div class="step-image">
@@ -1440,7 +1548,7 @@
                         <div class="faq-icon"><i class='bx bx-chevron-down'></i></div>
                     </div>
                     <div class="faq-answer">
-                        MSS serves as an AI-powered discovery and guidance platform. It generates a precise document checklist for each scheme and provides direct links to the official government portals for registration and submission — keeping you on official channels at all times.
+                        MSS serves as an AI-powered discovery and guidance platform. It generates a precise document checklist for each scheme and provides direct links to the official government portals for registration and submission, keeping you on official channels at all times.
                     </div>
                 </div>
                 <div class="faq-item" onclick="this.classList.toggle('active')">
@@ -1461,18 +1569,18 @@
         <!-- Bottom CTA -->
         <section class="bottom-cta">
             <h2>Discover. Apply. Empower.</h2>
-            <p class="desktop-only">Bridge the awareness gap today. Download MSS and let Saarthi guide you to the government schemes you qualify for — in English or Tamil, in seconds.</p>
-            <p class="mobile-only">Download MSS free. Find schemes you qualify for — in seconds.</p>
+            <p class="desktop-only">Bridge the awareness gap today. Download MSS and let Saarthi guide you to the government schemes you qualify for in English or Tamil, in seconds.</p>
+            <p class="mobile-only">Download MSS free. Find schemes you qualify for in seconds.</p>
             <a href="#" class="store-btn" onclick="alert('Download started!')">
                 <i class='bx bxl-android'></i>
-                <span>Download MSS — Free</span>
+                <span>Download MSS, Free</span>
             </a>
         </section>
 
         <footer>
-            <p style="margin-bottom: 8px;">&copy; 2026 MSS — MSME Scheme Search. All rights reserved.</p>
+            <p style="margin-bottom: 8px;">&copy; 2026 MSS. MSME Scheme Search. All rights reserved.</p>
             <p style="font-size: 0.8rem; color: #9ca3af;">Developed by the Department of Computer Science and Business Systems, Rajalakshmi Institute of Technology, Kuthambakkam &amp; Swadeshi Shodh Sanstan.</p>
-            <p style="font-size: 0.8rem; color: #6b7280; margin-top: 6px;">Launched by the Hon'ble Governor of Tamil Nadu, Thiru. Rajendra Vishwanath Arlekar — 07 August 2026, Bharathiyar Mandapam, Lok Bhavan, Chennai.</p>
+            <p style="font-size: 0.8rem; color: #6b7280; margin-top: 6px;">Launched by the Hon'ble Governor of Tamil Nadu, Thiru. Rajendra Vishwanath Arlekar, 07 August 2026, Bharathiyar Mandapam, Lok Bhavan, Chennai.</p>
         </footer>
     </div>
 
@@ -1545,17 +1653,40 @@
             // Trigger hero animations right away
             initHeroAnimations();
 
-            // Animate Bento Boxes on scroll
-            gsap.from(".bento-box", {
-                scrollTrigger: {
-                    trigger: ".bento-grid",
-                    start: "top 80%",
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                stagger: 0.15,
-                ease: "power3.out"
+            // Animate Bento Boxes on scroll (responsive)
+            let bentoMM = gsap.matchMedia();
+
+            bentoMM.add("(min-width: 769px)", () => {
+                // Desktop: fade-in stagger
+                gsap.from(".bento-box", {
+                    scrollTrigger: {
+                        trigger: ".bento-grid",
+                        start: "top 80%",
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    stagger: 0.15,
+                    ease: "power3.out"
+                });
+            });
+
+            bentoMM.add("(max-width: 768px)", () => {
+                // Mobile: individual card reveal as they enter viewport
+                const bentoCards = gsap.utils.toArray(".bento-box");
+                bentoCards.forEach((card) => {
+                    gsap.from(card, {
+                        scrollTrigger: {
+                            trigger: card,
+                            start: "top 90%",
+                        },
+                        y: 60,
+                        opacity: 0,
+                        scale: 0.96,
+                        duration: 0.6,
+                        ease: "power3.out"
+                    });
+                });
             });
 
 
