@@ -524,8 +524,18 @@
         }
         .bento-box:nth-child(4):hover { box-shadow: 7px 7px 0 var(--brand-saffron); }
 
+        .bento-box:nth-child(5) {
+            border-color: var(--brand-navy);
+            box-shadow: 5px 5px 0 var(--brand-navy);
+        }
+        .bento-box:nth-child(5):hover { box-shadow: 7px 7px 0 var(--brand-navy); }
+
         .bento-box.span-2 {
             grid-column: span 2;
+        }
+
+        .bento-box.span-3 {
+            grid-column: span 3;
         }
 
         .bento-visual {
@@ -608,6 +618,34 @@
         /* Visual 4 */
         .secure-visual {
             width: 90px; height: 90px; background: #fff; border-radius: 50%; box-shadow: 0 0 0 12px rgba(255, 153, 51, 0.12), 0 0 0 24px rgba(255, 153, 51, 0.06); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; color: var(--brand-saffron); border: 2px solid rgba(255, 153, 51, 0.3);
+        }
+
+        /* Visual 5 - Bilingual */
+        .lang-visual {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 16px;
+            border: 1px solid #e5e7eb;
+        }
+        .lang-tag {
+            width: 60px; height: 60px;
+            background: var(--brand-navy);
+            color: #fff;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem; font-weight: 800; font-family: 'VastagoGrotesk', sans-serif;
+            box-shadow: 0 4px 12px rgba(27, 58, 92, 0.2);
+        }
+        .lang-tag.tamil {
+            background: var(--brand-green);
+            box-shadow: 0 4px 12px rgba(19, 136, 8, 0.2);
+        }
+        .lang-visual i {
+            font-size: 2rem;
+            color: var(--text-secondary);
         }
 
 
@@ -1028,6 +1066,9 @@
             .bento-box:nth-child(2) { z-index: 2; top: 36px; }
             .bento-box:nth-child(3) { z-index: 3; top: 52px; }
             .bento-box:nth-child(4) { z-index: 4; top: 68px; }
+            .bento-box:nth-child(5) { z-index: 5; top: 84px; }
+            
+            .bento-box.span-3 { grid-column: span 1; }
         }
         
         @media (max-width: 768px) {
@@ -1071,6 +1112,7 @@
             .bento-box:nth-child(2) { box-shadow: 4px 4px 0 var(--brand-saffron); }
             .bento-box:nth-child(3) { box-shadow: 4px 4px 0 var(--brand-green); }
             .bento-box:nth-child(4) { box-shadow: 4px 4px 0 var(--brand-saffron); }
+            .bento-box:nth-child(5) { box-shadow: 4px 4px 0 var(--brand-navy); }
             .bento-box h3 { font-size: 1.4rem; }
             .bento-box p { font-size: 0.95rem; }
             .bento-visual { min-height: 160px; margin-bottom: 20px; padding: 20px 16px; }
@@ -1172,6 +1214,7 @@
             .bento-box:nth-child(2) { box-shadow: 3px 3px 0 var(--brand-saffron); }
             .bento-box:nth-child(3) { box-shadow: 3px 3px 0 var(--brand-green); }
             .bento-box:nth-child(4) { box-shadow: 3px 3px 0 var(--brand-saffron); }
+            .bento-box:nth-child(5) { box-shadow: 3px 3px 0 var(--brand-navy); }
             .bento-visual { min-height: 120px; margin-bottom: 16px; padding: 16px 12px; }
             .bento-box h3 { font-size: 1.2rem; margin-bottom: 8px; }
             .bento-box p { font-size: 0.88rem; }
@@ -1485,6 +1528,19 @@
                     <h3>Adaptive Questioning</h3>
                     <p class="desktop-only">Saarthi uses progressive profiling, asking only the minimum questions needed to improve recommendation accuracy. Simple, fast, and private.</p>
                     <p class="mobile-only">Asks only the minimum questions needed. Simple, fast, private.</p>
+                </div>
+
+                <!-- Box 5 (Wide) — Bilingual Support -->
+                <div class="bento-box span-3">
+                    <div class="bento-visual">
+                        <div class="lang-visual">
+                            <span class="lang-tag">A</span>
+                            <i class='bx bx-transfer-alt'></i>
+                            <span class="lang-tag tamil">அ</span>
+                        </div>
+                    </div>
+                    <h3>Bilingual Support (English &amp; Tamil)</h3>
+                    <p>Switch seamlessly between English and Tamil for a personalized experience. Built specifically to be accessible for everyone across Tamil Nadu.</p>
                 </div>
             </div>
         </section>
